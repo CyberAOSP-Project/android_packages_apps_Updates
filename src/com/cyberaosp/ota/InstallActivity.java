@@ -62,6 +62,7 @@ public class InstallActivity extends AppCompatActivity {
     private static final int READ_REQUEST_CODE = 8794;
 
     private static int INSTALL_REQUEST_CODE = 9087;
+    private static int ADD_FILE_REQUEST_CODE = 9088;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,7 +86,11 @@ public class InstallActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 fab.close(true);
-                performFileSearch();
+                if (!isStoragePermissionGranted(ADD_FILE_REQUEST_CODE)) {
+                    Toast.makeText(InstallActivity.this, getString(R.string.storage_permission_error), Toast.LENGTH_SHORT).show();
+                }else{
+                    performFileSearch();
+                }
             }
         });
 
@@ -415,6 +420,9 @@ public class InstallActivity extends AppCompatActivity {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if(requestCode == INSTALL_REQUEST_CODE && grantResults[0]== PackageManager.PERMISSION_GRANTED){
             checkRootPreInstall();
+        }
+        if(requestCode == ADD_FILE_REQUEST_CODE && grantResults[0]== PackageManager.PERMISSION_GRANTED){
+            performFileSearch();
         }
     }
 
