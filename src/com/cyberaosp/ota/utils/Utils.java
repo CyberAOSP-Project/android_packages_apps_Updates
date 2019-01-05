@@ -68,7 +68,7 @@ public class Utils {
     }
 
     public static String getInstalledVersion() {
-        return SystemProperties.get("ro.cyber.version");
+        return SystemProperties.get("org.cyberaosp.version");
     }
 
     public static long getInstalledBuildDate() {

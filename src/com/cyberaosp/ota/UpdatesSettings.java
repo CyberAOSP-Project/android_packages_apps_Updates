@@ -591,7 +591,7 @@ public class UpdatesSettings extends PreferenceFragmentCompat implements
         preferenceScreen.removePreference(mAdddonsList);
 
         // Convert the installed version name to the associated filename
-        String installedZip = "cyberaosp_" + Utils.getDeviceType() + "-" + Utils.getInstalledVersion() + ".zip";
+        String installedZip = "CyberAOSP_" + Utils.getDeviceType() + "-" + Utils.getInstalledVersion() + ".zip";
 
 
 
